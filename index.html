@@ -34,6 +34,15 @@
         function generateRandomPercent() {
             var percent = Math.floor(Math.random() * 101);
             document.getElementById('result').innerText = 'Random Percent: ' + percent + '%';
+            // Отправляем результат обратно в Telegram
+            if (window.Telegram.WebApp) {
+                window.Telegram.WebApp.sendData(percent);
+            }
+        }
+        
+        // Инициализация Telegram Web App
+        if (window.Telegram.WebApp) {
+            window.Telegram.WebApp.ready();
         }
     </script>
 </body>
